@@ -1,0 +1,23 @@
+{% extends 'plantilla/index.html' %}
+
+{% block content %}
+<h1>Track <span style="color: aquamarine;">Ensigne</span></h1>
+<h3>Carga los datos de un paciente!.</h3>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="image">Selecciona una imagen:</label>
+    <input type="file" name="image" id="image" accept="image/*" required>
+
+    <label for="patient_name">Nombre del paciente:</label>
+    <input type="text" name="patient_name" id="patient_name" required autocomplete="false">
+
+    <label for="patient_name">Edad del paciente:</label>
+    <input type="number" name="patient_age" id="patient_name" required autocomplete="false">
+
+    <label for="patient_name">Datos del paciente:</label>
+    <textarea type="text" name="patient_report" id="patient_name" required></textarea>
+
+
+    <button type="submit">Extraer Rostro</button>
+</form>
+{% endblock %}
