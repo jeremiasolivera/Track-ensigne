@@ -38,8 +38,9 @@
             <li><a href="{% url 'home' %}" class="nav-link px-2 link-secondary">Inicio</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'extracted' %}" class="nav-link px-2">Registrar Paciente</a></li>
-            <li><a href="{% url 'pacientes' %}" class="nav-link px-2">Mis pacientes</a></li>
+            <li><a href="{% url 'pacientes' %}" class="nav-link px-2">Pacientes</a></li>
             <li><a href="{% url 'recognition' %}" class="nav-link px-2">Iniciar Seguridad</a></li>
+            <li><a href="{% url 'sitio_restringido' %}" class="nav-link px-2">Restringir Salas</a></li>
             {% endif %}
         </ul>
 
