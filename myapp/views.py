@@ -13,6 +13,7 @@ def extract_faces(request):
         image = request.FILES['image']
         patient_age = int(request.POST.get('patient_age'))
         patient_report = request.POST.get('patient_report')
+        patient_state = request.POST.get('patient_state')
         patient_name = request.POST.get('patient_name')  # Obtén el nombre del paciente del formulario
         imagesPath = "C:/Users/alexi/OneDrive/Escritorio/Programming/FaceRecognitionV2/faces"
 
@@ -24,7 +25,7 @@ def extract_faces(request):
         with open(image_path, 'wb') as f:
             for chunk in image.chunks():
                 f.write(chunk)
-        paciente = Paciente(nombre=patient_name, imagen=image, edad=patient_age, informe_medico=patient_report)
+        paciente = Paciente(nombre=patient_name, imagen=image, edad=patient_age, estado=patient_state,informe_medico=patient_report)
         paciente.save()
         # Código para el procesamiento de imágenes y extracción de rostros
         faceClassif = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")

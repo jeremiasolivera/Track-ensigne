@@ -26,12 +26,20 @@
         <input class="form-control" name="image" type="file" id="formFile">
       </div>
     <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Nombre:</label>
+        <label for="exampleFormControlInput1" class="form-label">Nombre Completo:</label>
         <input type="text" class="form-control" name="patient_name" id="exampleFormControlInput1">
       </div><div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Edad:</label>
         <input type="number" class="form-control" name="patient_age" id="exampleFormControlInput1" min="15" max="120" >
       </div>
+      <div class="mb-3">
+        <label for="exampleFormControlSelect1" class="form-label">Estado del Paciente:</label>
+        <select class="form-select" name="patient_state" id="exampleFormControlSelect1">
+            <option value="En observacion">En observacion</option>
+            <option value="Atencion especial">Atencion especial</option>
+            <option value="Alta medica">Alta medica</option>
+        </select>
+    </div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Informe Médico:</label>
         <textarea class="form-control" name="patient_report" id="exampleFormControlTextarea1" rows="3"></textarea>
