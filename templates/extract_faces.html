@@ -2,9 +2,11 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<main class="container w-50 m-auto">
-    <h1>Track <span style="color: aquamarine;">Ensigne</span></h1>
-    <h3>Carga los datos de un paciente!.</h3>
+<div class="container w-50 m-auto mt-5" style="background-color: rgba(65, 105, 225, 0.097);padding: 30px; margin-top: 100px; border-radius: 10px; box-shadow: 3px 5px 8px rgba(0, 0, 0, .2); border: 1px solid  rgba(65, 105, 225, 0.211);">
+  
+  <div>
+    <h1 style="font-weight: 500">Track <span style="color: rgb(18, 182, 232); font-weight: 500;">Ensigne</span></h1>
+    <h3 style="margin-bottom: 20px; font-weight: 200">Carga los datos de un paciente!.</h3>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
     <!-- <label for="image">Selecciona una imagen:</label>
@@ -20,23 +22,26 @@
     <textarea type="text" name="patient_report" id="patient_name" required></textarea> -->
 
     <div class="mb-3">
-        <label for="formFile" class="form-label">Imagen del Paciente</label>
+        <label for="formFile" class="form-label">Imagen del Paciente:</label>
         <input class="form-control" name="image" type="file" id="formFile">
       </div>
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Nombre:</label>
         <input type="text" class="form-control" name="patient_name" id="exampleFormControlInput1">
       </div><div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Edad</label>
+        <label for="exampleFormControlInput1" class="form-label">Edad:</label>
         <input type="number" class="form-control" name="patient_age" id="exampleFormControlInput1" min="15" max="120" >
       </div>
       <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Informe Médico</label>
+        <label for="exampleFormControlTextarea1" class="form-label">Informe Médico:</label>
         <textarea class="form-control" name="patient_report" id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>
 
 
     <button type="submit" class="btn btn-primary">Registrar Paciente</button>
 </form>
-</main>
+  </div>
+</div>
+
+<br><br><br><br><br>
 {% endblock %}

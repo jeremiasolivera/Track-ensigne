@@ -11,6 +11,20 @@
 
 <form method="POST">
     {% csrf_token %}
+    
+    <label>
+        Nombre de la sala:
+        <input type="text" placeholder="Home">
+    </label>    
+    <br>
+    <label>
+        Restringir a:
+        <select name="tiempo_desconocido" id="">
+            <option value="5">Pacientes</option>
+            <option value="10">Desconocidos</option>
+        </select>
+    </label>  
+    <br>
     <p>Cuanto tiempo esperar para enviar notificación</p>
     <select name="tiempo_desconocido" id="">
         <option value="5">5seg</option>

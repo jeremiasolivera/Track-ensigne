@@ -22,10 +22,20 @@
         </ul>
     </nav>
 </header> -->
+{%block style%}
+    <style>
+        
+        .navbar button:hover a{
+            color: white;
+            cursor: pointer;
+        }
+       
+    </style>
+    {%endblock%}
 
 <div class="container">
-    <header
-        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <header 
+        class="navbar d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-1 border-bottom">
         <div class="col-md-3 mb-2 mb-md-0">
             <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
                 <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap">
@@ -37,10 +47,9 @@
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="{% url 'home' %}" class="nav-link px-2 link-secondary">Inicio</a></li>
             {% if user.is_authenticated %}
-            <li><a href="{% url 'extracted' %}" class="nav-link px-2">Registrar Paciente</a></li>
+            <li><a href="{% url 'extracted' %}" class="nav-link px-2">Añadir Paciente</a></li>
             <li><a href="{% url 'pacientes' %}" class="nav-link px-2">Pacientes</a></li>
-            <li><a href="{% url 'recognition' %}" class="nav-link px-2">Iniciar Seguridad</a></li>
-            <li><a href="{% url 'sitio_restringido' %}" class="nav-link px-2">Restringir Salas</a></li>
+            <li><a href="{% url 'recognition' %}" class="nav-link px-2">Seguridad</a></li>
             {% endif %}
         </ul>
 
@@ -51,7 +60,7 @@
 
             {% else %}
 
-            <button type="button" class="btn btn-outline-primary me-2"><a style="text-decoration: none;"href="{% url 'account_login' %}">Iniciar
+            <button type="button"  class="btn btn-outline-primary me-2"><a style="text-decoration: none;"href="{% url 'account_login' %}">Iniciar
                     Sesion</a></button>
             <button type="button" class="btn btn-outline-primary me-2"><a style="text-decoration: none;"href="{% url 'account_signup' %}">Registrarse</a></button>
 

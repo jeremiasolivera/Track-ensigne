@@ -1,6 +1,86 @@
 {% extends 'plantilla/index.html' %}
 
+
+{%block style%}
+<style>
+    body{
+            font-family: 'Poppins', sans-serif; 
+            background-color: #fdfdfd;
+            font-weight: 200;
+        }
+    .content {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .titulo {
+        font-size: 2rem;
+        font-weight: bold;
+
+    }
+
+    .span1 {
+        color: royalblue;
+    }
+
+    /*Presentación*/
+
+    .presentation-cont {
+        height: 80vh;
+        width: 100%;
+        position: relative;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.385) 0%, rgba(0, 0, 0, 0.932)100%), url(https://images.unsplash.com/photo-1643228995868-bf698f67d053?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin-bottom: 3rem;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, .5);
+    }
+
+    .cover-present {
+        width: 95%;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .title-present {
+        text-align: center;
+        font-size: 2rem;
+        letter-spacing: .5px;
+        font-weight: 800;
+        font-family: 'Poppins', sans-serif;
+        display: block;
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    .p-present {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.893);
+
+    }
+    .navbar{
+        font-size: 18px;
+    }
+</style>
+{%endblock%}
+
+
 {%block content%}
-    <h1>Reconocimiento Facial</h1>
-    <h2>El mejor producto para las empresas</h2>
+<main class="main">
+    <div class="presentation-cont">
+        <div class="cover-present">
+            <h2 class="title-present">Hacia un cuidado más seguro.</h2>
+            <p class="p-present">Nuestra aplicación innovadora de detección de rostros.</p>
+
+        </div>
+    </div>
+
+    <div class="content">
+
+    </div>
+</main>
 {%endblock%}
