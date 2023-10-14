@@ -1,13 +1,21 @@
 {% extends 'plantilla/index.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
-    <h3>Actualizar de los pacientes</h3>
+<main class="container w-50 m-auto mt-4">
+    <div style="background-color: rgba(65, 105, 225, 0.097);padding: 30px; border-radius: 10px; box-shadow: 3px 5px 8px rgba(0, 0, 0, .2); border: 1px solid  rgba(65, 105, 225, 0.211);">
+    <h3>Actualizacion del paciente</h3>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar Cambios</button>
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
     </form>
+
+        
+          
+        </div>
+        </main>
 
     <a href="{% url 'pacientes' %}">Cancelar</a>
 {% endblock %}

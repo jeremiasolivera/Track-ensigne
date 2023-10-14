@@ -27,17 +27,17 @@
       </div>
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Nombre Completo:</label>
-        <input type="text" class="form-control" name="patient_name" id="exampleFormControlInput1">
+        <input type="text" autocomplete="off" class="form-control" name="patient_name" id="exampleFormControlInput1">
       </div><div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Edad:</label>
-        <input type="number" class="form-control" name="patient_age" id="exampleFormControlInput1" min="15" max="120" >
+        <input type="number" autocomplete="off" class="form-control" name="patient_age" id="exampleFormControlInput1" min="15" max="120" >
       </div>
       <div class="mb-3">
         <label for="exampleFormControlSelect1" class="form-label">Estado del Paciente:</label>
         <select class="form-select" name="patient_state" id="exampleFormControlSelect1">
+          <option value="Alta medica">Alta medica</option>
             <option value="En observacion">En observacion</option>
             <option value="Atencion especial">Atencion especial</option>
-            <option value="Alta medica">Alta medica</option>
         </select>
     </div>
       <div class="mb-3">
