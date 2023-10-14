@@ -52,9 +52,13 @@
 
     .cont-img-detalle {
         width: 100%;
+        max-height: 200px;
         overflow: hidden;
         border-radius: 5px;
         margin-bottom: 25px;
+    }
+    .cont-img-detalle img{
+        object-fit: cover;
     }
 
     .en-observacion {
@@ -122,7 +126,7 @@
                     class="{%if pacientes.estado == 'En observacion'%}en-observacion{%elif pacientes.estado == 'Atencion especial'%}atencion-especial{%elif pacientes.estado == 'Alta medica'%}alta-medica{%endif%}">
                 </div>
             </div>
-            Informe: <p class="informe-medico">{{pacientes.informe_medico}}</p>
+            Informe Médico: <p class="informe-medico">{{pacientes.informe_medico}}</p>
 
             <div class="opcion-pacientes">
                 <a href="{% url 'eliminar_paciente' pacientes.pk %}">Eliminar</a>
