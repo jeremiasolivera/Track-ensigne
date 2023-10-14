@@ -9,8 +9,8 @@
             font-weight: 200;
         }
     .content {
-        width: 90%;
-        margin: 0 auto;
+        width: 95%;
+        margin: 5rem auto;
     }
 
     .titulo {
@@ -65,6 +65,128 @@
     .navbar{
         font-size: 18px;
     }
+
+    .feature-cont{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .feature{
+        width: 400px;
+        height: 250px;
+        background-color: rgb(78, 118, 237);
+        color: white;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        gap: 10px;
+    }
+    .people_say{
+        margin-top: 50px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+
+	
+}
+/*Testimonios*/
+.reseña-title{
+    font-size: 25px;
+    margin-top: 60px;
+    text-align: center;
+    color: #0d95d4b7;
+    text-transform: uppercase;
+}
+
+.cont-reseña{
+    width: 400px;
+    height: 350px;
+    background-color: rgb(216, 232, 255);
+    padding: 10px 38px;
+	box-shadow: 0 0 10px rgba(255, 255, 255, .4);
+    border-radius: 5px;
+	color: #1f1d1d;
+	
+}
+
+.cont_img_res{
+    border: 3px solid #7ddaca;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+    margin-top: 15px;
+    border-radius: 50%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .4);
+    overflow: hidden;
+}
+
+.img-person{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.name-person{
+    text-align: center;
+    font-size: .9rem;
+    margin-top: 15px;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.profession-person{
+    text-align: center;
+    margin-top: 13px;
+    font-size: .8rem;
+    font-weight: 300;
+    color: #3fa9da;
+    text-transform: uppercase;
+}
+
+.description-person{
+    text-align: center;
+    font-size: .9rem;
+    margin-top: 15px;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+
+.btns-cards{
+    width: 100px;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  
+}
+
+.btn-right, .btn-left{
+    background-color: transparent;
+    outline: none;
+   border: none;
+    color: #3fa9da;
+    font-size: 20px;
+    transition: all 300ms;
+    z-index: 1;
+}
+
+.btn-right:hover{
+    cursor: pointer;
+    color: #3fa9dab7;
+}
+
+.btn-left:hover{
+    cursor: pointer;
+    color: #3fa9dab7;
+}
+
+
 </style>
 {%endblock%}
 
@@ -80,7 +202,64 @@
     </div>
 
     <div class="content">
+        {% if user.is_authenticated %}
+            <h3 style="text-decoration: underline; ">Bienvenido <span style="font-weight: 800; text-transform: capitalize;">{{user.username}}</span>! disfruta de nuestro servicio.</h3>
+        {% else %}    
+        <h3 style="text-decoration: underline; ">Inicia sesión o registrate para disfrutar de nuestro servicio.</h3>
+        {% endif %}
+        <h4 style="text-decoration: underline; margin-top: 80px;">Nuestras Características.</h4>
+        <div class="feature-cont">
+            <div class="feature">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="M18.125 2H5.875A1.877 1.877 0 0 0 4 3.875v12.25C4 17.159 4.841 18 5.875 18H11v2H7v2h10v-2h-4v-2h5.125A1.877 1.877 0 0 0 20 16.125V3.875A1.877 1.877 0 0 0 18.125 2zM18 16H6V4h12v12z"></path><path d="M12 14c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.103 0 2 .897 2 2s-.897 2-2 2-2-.897-2-2 .897-2 2-2z"></path></svg>
+                <h5 class="feature-title">Seguridad Garantizada</h5>
+                <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate, qui!</p>
+            </div>
+                <div class="feature">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="M12.71 2.29a1 1 0 0 0-1.42 0l-9 9a1 1 0 0 0 0 1.42A1 1 0 0 0 3 13h1v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7h1a1 1 0 0 0 1-1 1 1 0 0 0-.29-.71zM6 20v-9.59l6-6 6 6V20z"></path></svg>
+                    <h5 class="feature-title">Máximo Cuidado</h5>
+                    <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate, qui!</p>
+                </div>
+            
+                <div class="feature">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="M3 3v17a1 1 0 0 0 1 1h17v-2H5V3H3z"></path><path d="M15.293 14.707a.999.999 0 0 0 1.414 0l5-5-1.414-1.414L16 12.586l-2.293-2.293a.999.999 0 0 0-1.414 0l-5 5 1.414 1.414L13 12.414l2.293 2.293z"></path></svg>
+                    <h5 class="feature-title">Elevación De Informes</h5>
+                    <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate, qui!</p>
+                </div>
+            
+        </div>
+        <h4 style="text-decoration: underline; margin-top: 80px;">Testimonios.</h4>
+        <section class="people_say">
+            <section class="cont-reseña">
+              <div class="cont_img_res">
+                  <img class="img-person" src="https://laboratoriosniam.com/wp-content/uploads/2018/07/michael-dam-258165-unsplash_WEB2.jpg" alt="reseña foto">
+              </div>
+              <h2 class="name-person">Susan Smith</h2>
+              <h3 class="profession-person">Web Developer</h3>
+              <p class="description-person">fsão fantásticos, da p, następnym razem, gdy będę podróżować, zrobię </p>
+  
+          </section>
+          <section class="cont-reseña">
+            <div class="cont_img_res">
+                <img class="img-person" src="https://www.rootonde.nl/s4s_upload/202006231125321.%20332x332%20Rootonde%20website%20-%20Persona%20Grata.png" alt="reseña foto">
+            </div>
+            <h2 class="name-person">Alexander Connor</h2>
+            <h3 class="profession-person">Back End</h3>
+            <p class="description-person">Loty są fantastyczne, następnym razem, gdy będę podróżować, zrobię to z tą firmą. Usługa jest skuteczna.</p>
 
+        </section>
+        <section class="cont-reseña">
+          <div class="cont_img_res">
+              <img class="img-person" src="https://www.paredro.com/wp-content/uploads/2015/08/shutterstock_188419790-e1439475344980.jpg" alt="reseña foto">
+          </div>
+          <h2 class="name-person">John Banner</h2>
+          <h3 class="profession-person">Web Design</h3>
+          <p class="description-person">Os voos são fantásticos, da próxima vez que viajar vou fazê-lo com esta empresa. O serviço é eficaz.</p>
+
+      </section>
+
+          </section>
+
+        
     </div>
 </main>
 {%endblock%}
