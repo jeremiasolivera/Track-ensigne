@@ -6,6 +6,11 @@
         font-size: 18px;
     }
 
+    html{
+        position: relative;
+
+    }
+
     body {
         font-family: 'Poppins', sans-serif;
         background-color: #fdfdfd;
@@ -103,6 +108,66 @@
         max-width: 100%;
         word-wrap: break-word;
     }
+    .header-detalle{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    .btn-detalle{
+        border: none;
+        background-color: rgb(99, 130, 224);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 98px;
+        right: 20px;
+    }
+
+    .background-p{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.52);
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        transition: all 200ms ease-in;
+        visibility: hidden;
+        opacity: 0;
+        position: fixed;
+    }
+
+    .pop-up{
+        margin-top: 90px;
+        background-color: #fdfdfd;
+        width: 900px;
+        height: 500px;
+        border-radius: 10px;
+        padding: 30px;
+        position: relative;
+        transition: all 200ms ease-in;
+    }
+    .close-popup{
+        border: none;
+        background-color: rgb(99, 130, 224);
+        color: white;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 80px;
+        right: 210px;
+    }
 </style>
 {%endblock%}
 
@@ -110,7 +175,10 @@
 {% block content %}
 
 <div class="content-detalle">
-    <h3 class="titulo-detalle">Detalle de los pacientes</h3>
+    <div class="header-detalle">
+        <h3 class="titulo-detalle">Detalle de los pacientes</h3>
+        <button class="btn-detalle" id="btn-detalle"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M11 11h2v6h-2zm0-4h2v2h-2z"></path></svg></button>
+    </div>
 
     <div class="content-for">
         {% for pacientes in patients %}
@@ -136,5 +204,49 @@
 
         {% endfor %}
     </div>
+
+    <!-- Pop up detalle -->
+
+    <div class="background-p">
+        <div class="pop-up">
+            <h4>Más información.</h4>
+            <div style="display: flex;align-items: center;gap: 10px; font-size: 18px;">En observación: <div class="en-observacion"></div></div>
+            <div style="display: flex;align-items: center;gap: 10px; font-size: 18px;">Atención especial: <div class="atencion-especial"></div></div>
+            <div style="display: flex;align-items: center;gap: 10px; font-size: 18px;">Alta médica: <div class="alta-medica"></div></div>
+        </div>
+        <button id="close-popup" class="close-popup"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg></button>
+    </div>
+
+
 </div>
 {% endblock %}
+
+{%block script%}
+<script>
+    let closePopup = document.getElementById("close-popup");
+    let backgroundPopup = document.querySelector(".background-p");
+    let popup = document.querySelector(".popup");
+    let openPopUp = document.querySelector(".btn-detalle");
+    
+    closePopup.addEventListener('click', ()=>{
+        backgroundPopup.style.opacity = "0"
+        backgroundPopup.style.visibility = "hidden"
+        backgroundPopup.style.userSelect = "none"
+        popup.style.opacity = "0"
+        popup.style.visibility = "hidden"
+        popup.style.userSelect = "none"
+
+    });
+
+    openPopUp.addEventListener('click', ()=>{
+        backgroundPopup.style.opacity = "1"
+        backgroundPopup.style.visibility = "visible"
+        backgroundPopup.style.userSelect = "auto"
+        popup.style.opacity = "1"
+        popup.style.visibility = "visible"
+        popup.style.userSelect = "auto"
+
+    });
+
+</script>
+{%endblock%}
