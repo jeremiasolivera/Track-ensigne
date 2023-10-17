@@ -1,6 +1,360 @@
 {% extends 'plantilla/index.html' %}
 
+
+{%block style%}
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #fdfdfd;
+        font-weight: 200;
+    }
+
+    .content {
+        width: 95%;
+        margin: 5rem auto;
+    }
+
+    .titulo {
+        font-size: 2rem;
+        font-weight: bold;
+
+    }
+
+    .span1 {
+        color: royalblue;
+    }
+
+    /*Presentación*/
+
+    .presentation-cont {
+        height: 80vh;
+        width: 100%;
+        position: relative;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.385) 0%, rgba(0, 0, 0, 0.932)100%), url(https://images.unsplash.com/photo-1643228995868-bf698f67d053?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin-bottom: 3rem;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, .5);
+    }
+
+    .cover-present {
+        width: 95%;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .title-present {
+        text-align: center;
+        font-size: 2rem;
+        letter-spacing: .5px;
+        font-weight: 800;
+        font-family: 'Poppins', sans-serif;
+        display: block;
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    .p-present {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.893);
+
+    }
+
+    .navbar {
+        font-size: 18px;
+    }
+
+    .feature-cont {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .feature {
+        width: 400px;
+        height: 250px;
+        background: rgb(3,114,160);
+background: linear-gradient(12deg, rgba(3,114,160,1) 0%, rgba(18,101,214,1) 35%, rgba(18,182,232,1) 100%);
+        color: white;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        gap: 10px;
+        box-shadow: -3px -2px 10px rgba(0, 0, 0, 0.109);
+    }
+
+    .people_say {
+        margin-top: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+
+    }
+
+    /*Testimonios*/
+    .reseña-title {
+        font-size: 25px;
+        margin-top: 60px;
+        text-align: center;
+        color: #0d95d4b7;
+        text-transform: uppercase;
+    }
+
+    .cont-reseña {
+        width: 400px;
+        height: 380px;
+        background: rgb(31, 132, 247);
+        padding: 10px 38px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, .4);
+        border-radius: 5px;
+        color: white;
+
+    }
+
+    .cont_img_res {
+        border: 3px solid #72beeb;
+        width: 130px;
+        height: 130px;
+        margin: 0 auto;
+        margin-top: 15px;
+        border-radius: 50%;
+        box-shadow: 0 0 3px rgba(0, 0, 0, .4);
+        overflow: hidden;
+    }
+
+    .img-person {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+
+    .name-person {
+        text-align: center;
+        font-size: .9rem;
+        margin-top: 15px;
+        letter-spacing: 1px;
+        font-weight: 700;
+    }
+
+    .profession-person {
+        text-align: center;
+        margin-top: 13px;
+        font-size: .8rem;
+        font-weight: 300;
+        color: #bae9ff;
+        text-transform: uppercase;
+    }
+
+    .description-person {
+        text-align: center;
+        font-size: .9rem;
+        margin-top: 15px;
+        letter-spacing: 1px;
+        font-weight: 400;
+    }
+
+
+    .btns-cards {
+        width: 100px;
+        margin: 30px auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+    }
+
+    .btn-right,
+    .btn-left {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        color: #3fa9da;
+        font-size: 20px;
+        transition: all 300ms;
+        z-index: 1;
+    }
+
+    .rando-cont{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+    }
+
+    .random-img{
+        width: 40%;
+        border-radius: 70px 0 70px 0;
+        overflow: hidden;
+    }
+
+    .random-img img{
+        width: 100%;
+        height: 100%;
+        display: block;
+
+    }
+
+    
+    </style>
+{%endblock%}
+
+
 {%block content%}
-    <h1>Reconocimiento Facial</h1>
-    <h2>El mejor producto para las empresas</h2>
+<main class="main">
+    <div class="presentation-cont">
+        <div class="cover-present">
+            <h2 class="title-present">Hacia un cuidado más seguro.</h2>
+            <p class="p-present">Nuestra aplicación innovadora de detección de rostros.</p>
+
+        </div>
+    </div>
+
+    <div class="content">
+        {% if user.is_authenticated %}
+        <h3 style="text-decoration: underline; ">Bienvenido <span
+                style="font-weight: 800; text-transform: capitalize;">{{user.username}}</span>! disfruta de nuestro
+            servicio.</h3>
+        {% else %}
+        <h3 style="text-decoration: underline; ">Inicia sesión o registrate para disfrutar de nuestro servicio.</h3>
+        {% endif %}
+
+        <div class="rando-cont" style="margin: 10rem 0;">
+            <div class="random-img">
+                <img src="https://plus.unsplash.com/premium_photo-1672292536170-8de3ec091ced?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="">
+            </div>
+            
+            <div style="width: 40%;">
+
+                <h4>Profesionales en el área.</h4>
+                <p >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad nostrum itaque eius sint doloremque sit, optio mollitia possimus corporis minus nesciunt. Quidem impedit ipsum itaque aut facilis, nemo expedita ad!</p>
+            </div>
+        </div>
+
+        <div class="rando-cont" style="margin: 10rem 0;">
+            <div style="width: 40%;">
+
+                <h4>Espacios cuidados.</h4>
+                <p >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad nostrum itaque eius sint doloremque sit, optio mollitia possimus corporis minus nesciunt. Quidem impedit ipsum itaque aut facilis, nemo expedita ad!</p>
+            </div>
+            <div class="random-img">
+                <img src="https://images.unsplash.com/photo-1613377512409-59c33c10c821?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="">
+            </div>
+            
+        </div>
+
+        <div class="rando-cont" style="margin: 10rem 0;">
+            <div class="random-img">
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1453&q=80" alt="">
+            </div>
+            <div style="width: 40%;">
+
+                <h4>Atención a familiares.</h4>
+                <p >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad nostrum itaque eius sint doloremque sit, optio mollitia possimus corporis minus nesciunt. Quidem impedit ipsum itaque aut facilis, nemo expedita ad!</p>
+            </div>
+            
+        </div>
+
+        
+
+        <h4 style="text-decoration: underline; margin-top: 80px;">Nuestras Características.</h4>
+        <div class="feature-cont">
+            <div class="feature">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24"
+                    style="fill: rgb(255, 255, 255);transform: ;msFilter:;">
+                    <path
+                        d="M18.125 2H5.875A1.877 1.877 0 0 0 4 3.875v12.25C4 17.159 4.841 18 5.875 18H11v2H7v2h10v-2h-4v-2h5.125A1.877 1.877 0 0 0 20 16.125V3.875A1.877 1.877 0 0 0 18.125 2zM18 16H6V4h12v12z">
+                    </path>
+                    <path
+                        d="M12 14c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.103 0 2 .897 2 2s-.897 2-2 2-2-.897-2-2 .897-2 2-2z">
+                    </path>
+                </svg>
+                <h5 class="feature-title">Seguridad Garantizada</h5>
+                <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate,
+                    qui!</p>
+            </div>
+            <div class="feature">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24"
+                    style="fill: rgb(255, 255, 255);transform: ;msFilter:;">
+                    <path
+                        d="M12.71 2.29a1 1 0 0 0-1.42 0l-9 9a1 1 0 0 0 0 1.42A1 1 0 0 0 3 13h1v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7h1a1 1 0 0 0 1-1 1 1 0 0 0-.29-.71zM6 20v-9.59l6-6 6 6V20z">
+                    </path>
+                </svg>
+                <h5 class="feature-title">Máximo Cuidado</h5>
+                <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate,
+                    qui!</p>
+            </div>
+
+            <div class="feature">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24"
+                    style="fill: rgb(255, 255, 255);transform: ;msFilter:;">
+                    <path d="M3 3v17a1 1 0 0 0 1 1h17v-2H5V3H3z"></path>
+                    <path
+                        d="M15.293 14.707a.999.999 0 0 0 1.414 0l5-5-1.414-1.414L16 12.586l-2.293-2.293a.999.999 0 0 0-1.414 0l-5 5 1.414 1.414L13 12.414l2.293 2.293z">
+                    </path>
+                </svg>
+                <h5 class="feature-title">Elevación De Informes</h5>
+                <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate,
+                    qui!</p>
+            </div>
+
+        </div>
+
+        
+
+
+        <!-- <h4 style="text-decoration: underline; margin-top: 80px;">Testimonios.</h4>
+        <section class="people_say">
+            <section class="cont-reseña">
+                <div class="cont_img_res">
+                    <img class="img-person"
+                        src="https://laboratoriosniam.com/wp-content/uploads/2018/07/michael-dam-258165-unsplash_WEB2.jpg"
+                        alt="reseña foto">
+                </div>
+                <h2 class="name-person">Susana Smith</h2>
+                <h3 class="profession-person">Psicóloga Social</h3>
+                <p class="description-person">Aplicación de gran aporte y ayuda a las personas que necesitan de un
+                    monitoreo para la mejora de su salud.</p>
+
+            </section>
+            <section class="cont-reseña">
+                <div class="cont_img_res">
+                    <img class="img-person"
+                        src="https://www.rootonde.nl/s4s_upload/202006231125321.%20332x332%20Rootonde%20website%20-%20Persona%20Grata.png"
+                        alt="reseña foto">
+                </div>
+                <h2 class="name-person">Alejandro Rodriguez</h2>
+                <h3 class="profession-person">Psiquiatra</h3>
+                <p class="description-person">Impresionado de esta app. Facilita la comunicación con mis pacientes, les
+                    permite llevar un seguimiento de su bienestar emocional mejorando la gestión de su tratamiento.</p>
+
+            </section>
+            <section class="cont-reseña">
+                <div class="cont_img_res">
+                    <img class="img-person"
+                        src="https://www.paredro.com/wp-content/uploads/2015/08/shutterstock_188419790-e1439475344980.jpg"
+                        alt="reseña foto">
+                </div>
+                <h2 class="name-person">Juan López</h2>
+                <h3 class="profession-person">Familiar de Paciente</h3>
+                <p class="description-person">Como familiar de alguien que se encuentra en tratamiento psiquiátrico,
+                    esta aplicación ha sido una gran ayuda para mantenerme informado sobre el progreso de mi ser
+                    querido.</p>
+
+            </section>
+
+        </section> -->
+
+
+    </div>
+</main>
 {%endblock%}

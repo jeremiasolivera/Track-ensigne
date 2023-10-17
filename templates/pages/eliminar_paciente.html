@@ -1,23 +1,18 @@
 {% extends 'plantilla/index.html' %}
 
 {% block content %}
-
-    <h3>Eliminar de los pacientes</h3>
+<main class="container w-50 m-auto mt-4" style="min-height: 200px;">
+    <div style="display: flex; flex-direction: column; gap: 20px; background-color: rgba(65, 105, 225, 0.097);padding: 30px; border-radius: 10px; box-shadow: 3px 5px 8px rgba(0, 0, 0, .2); border: 1px solid  rgba(65, 105, 225, 0.211);">
+    
+    <h3>Eliminar paciente</h3>
     <form method="POST">
         {% csrf_token %}
-        <h3>Estás seguro que quieres eliminar al usuario {{paciente.nombre}}</h3>   
+        <h5>Estás seguro que quieres eliminar al paciente <span style="color: royalblue;">{{paciente.nombre}}</span>?</h5>   
 
-        <button type="submit">Eliminar Paciente</button>
+        <button type="submit" class="btn btn-primary">Eliminar Paciente</button>
     </form>
 
-    <h2>Si quieres cancelar la acción: <a href="{% url 'pacientes' %}">Volver a inicio</a></h2>
-
-
-{% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-{% endif %}
+    <h6>Si quieres cancelar la acción: <a href="{% url 'pacientes' %}">Volver atras</a></h6>
+</main>
+</div>
 {% endblock %}
