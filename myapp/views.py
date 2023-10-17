@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from .form import PacienteForm
 import time
 
+from django.core.files.storage import default_storage
+
 @login_required
 def extract_faces(request):
     if request.method == 'POST' and request.FILES.get('image'):
@@ -101,6 +103,7 @@ def recognition(request):
         # Devuelve los resultados a la plantilla
         context = {
             'result': result,  # Agrega los resultados del reconocimiento
+            'nombre_paciente':name
         }
         return render(request, 'recognition.html', context)
 
@@ -124,6 +127,25 @@ def patients_delete(request, pk):
     if request.method == 'POST':
         try:
             paciente.delete()
+
+            image_filename = f"{paciente.nombre}.jpg"
+            
+            
+            # Ruta del archivo que deseas eliminar
+            image_path = os.path.join(f"C:/Users/alexi/OneDrive/Escritorio/Programming/FaceRecognitionV2/faces/{image_filename}")
+
+            # Comprobamos si el archivo existe antes de intentar eliminarlo
+            if os.path.exists(image_path):
+                try:
+                    # Eliminar el archivo
+                    os.remove(image_path)
+                    print(f"El archivo {image_path} ha sido eliminado exitosamente.")
+                except OSError as e:
+                    print(f"No se pudo eliminar el archivo {image_path}. Error: {e}")
+            else:
+                print(f"El archivo {image_path} no existe.")
+
+            
             return redirect('pacientes')
         except Exception as e:
             print.error(request, "Ocurrió un error al eliminar paciente")
@@ -174,6 +196,10 @@ def restricted_site(request):
         print(time_desc_advertencia)
         # Ruta donde se encuentran las imágenes de referencia de rostros conocidos
         imageFacesPath = "C:/Users/alexi/OneDrive/Escritorio/Programming/FaceRecognitionV2/faces"
+
+        #Nombre del sitio a restringir
+        nombre_sitio = request.POST.get('nombre_sitio')
+
 
         # Listas para almacenar las codificaciones de los rostros conocidos y sus nombres
         facesEncodings = []
@@ -274,6 +300,7 @@ def restricted_site(request):
         context = {
             'result': result,
             'desconocido_detectado': desconocido_detectado,  # Agregar los resultados del reconocimiento
+            'nombre_sitio': nombre_sitio
         }
 
         # Renderizar la plantilla con los resultados

@@ -4,18 +4,18 @@
 
 {% if desconocido_detectado == True %}
 <div class="alert alert-warning">
-    ¡Atención! Se ha detectado un rostro desconocido.
+    ¡Atención! Se ha detectado un rostro desconocido en <span style="font-weight: 600;color: rgb(100, 135, 240); text-transform: uppercase;">{{nombre_sitio}}</span>.
 </div>
 
 {% endif %}
 
-<form method="POST">
+<!-- <form method="POST">
     {% csrf_token %}
-    
+
     <label>
         Nombre de la sala:
         <input type="text" placeholder="Home">
-    </label>    
+    </label>
     <br>
     <label>
         Restringir a:
@@ -23,7 +23,7 @@
             <option value="5">Pacientes</option>
             <option value="10">Desconocidos</option>
         </select>
-    </label>  
+    </label>
     <br>
     <p>Cuanto tiempo esperar para enviar notificación</p>
     <select name="tiempo_desconocido" id="">
@@ -38,8 +38,52 @@
         <option value="10000">10min</option>
     </select>
     <button type="submit">Iniciar Seguridad</button>
-</form>
+</form> -->
 
+
+<div class="container w-50 m-auto mt-5"
+    style="background-color: rgba(65, 105, 225, 0.097);padding: 30px; margin-top: 100px; border-radius: 10px; box-shadow: 3px 5px 8px rgba(0, 0, 0, .2); border: 1px solid  rgba(65, 105, 225, 0.211);">
+
+    <div>
+        <h1 style="font-weight: 500">Track<span style="color: rgb(18, 182, 232); font-weight: 500;">Ensigne</span></h1>
+        <h3 style="margin-bottom: 20px; font-weight: 200">Restringe un sitio.</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nombre de Sala:</label>
+                <input type="text" autocomplete="off" class="form-control" name="nombre_sitio"
+                    id="exampleFormControlInput1">
+            </div>
+            <div class="mb-3">
+                <label>
+                    Restringir a:
+                    <select name="" id="">
+                        <option value="">Desconocidos</option>
+                        <option value="" disabled>Pacientes</option>
+                    </select>
+                </label>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlSelect1" class="form-label">Tiempo notificación:</label>
+                <select name="tiempo_desconocido" id="">
+                    <option value="5">5seg</option>
+                    <option value="10">10seg</option>
+                    <option value="15">15seg</option>
+                    <option value="30">20seg</option>
+                    <option value="1000">30seg</option>
+                    <option value="1000">1min</option>
+                    <option value="3000">3min</option>
+                    <option value="5000">5min</option>
+                    <option value="10000">10min</option>
+                </select>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Iniciar seguridad</button>
+        </form>
+    </div>
+</div>
 
 
 <!-- Aquí puedes mostrar el resto de la información o resultados -->

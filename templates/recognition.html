@@ -1,7 +1,59 @@
 
-    <h1>Resultado de Reconocimiento Facial</h1>
+{% extends 'plantilla/index.html' %}
+
+{% block style %}
+<style>
+    .navbar {
+        font-size: 18px;
+    }
+
+    html{
+        position: relative;
+
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #fdfdfd;
+        font-weight: 200;
+    }
+
+    .content-detalle {
+        width: 95%;
+        margin: 30px auto;
+        background-color: rgba(65, 105, 225, 0.113);
+        border: 1px solid rgba(65, 105, 225, 0.161);
+        padding: 20px;
+        border-radius: 10px;
+
+
+    }
+
+    .titulo-detalle {
+        font-size: 35px;
+        font-weight: 600;
+        margin-bottom: 20px;
+
+    }
+
+    
+</style>
+{%endblock%}
+
+
+{% block content %}
+
+<div class="content-detalle">
+    <h3 class="titulo-detalle">Detalle de los pacientes</h3>
+
     {% if result %}
-        <p>Resultado: {{ result }}</p>
+        <h5>Resultado: paciente <span style="font-weight: 600; color: rgb(103, 137, 240);">{{ nombre_paciente }}</span> en sala.</h5>
     {% else %}
-        <p>No se pudo reconocer el rostro en la imagen.</p>
+        <h5>No se pudo reconocer el rostro en la imagen.</h5>
     {% endif %}
+
+</div>
+{% endblock %}
+
+
+    
