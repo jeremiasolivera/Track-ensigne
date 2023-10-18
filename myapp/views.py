@@ -2,10 +2,10 @@ from django.shortcuts import render,redirect,get_object_or_404
 import cv2
 import os
 import face_recognition
+import time
 from .models import Paciente
 from django.contrib.auth.decorators import login_required
 from .form import PacienteForm
-import time
 
 from django.core.files.storage import default_storage
 
@@ -166,22 +166,6 @@ def patients_update(request, pk):
         form = PacienteForm(instance=paciente)
 
     return render(request, 'pages/actualizar_paciente.html', {'form': form})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ##########################################
